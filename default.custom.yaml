@@ -16,7 +16,7 @@ patch:
 
   # Menu
   menu:
-    page_size: 3                    # 候选词数量
+    page_size: 6                    # 候选词数量
   switcher:
     hotkeys:
       - "Control+0"
@@ -50,6 +50,10 @@ patch:
       #     - {accept: period, send: 3, when: has_menu} # 候选3 用句号选择
       - {accept: semicolon, send: 2, when: has_menu}  # 候选2 用分号
       - {accept: apostrophe, send: 3, when: has_menu} # 候选3 用单引号
+      - {accept: "Shift+Tab", send: Page_Up, when: composing}
+      - {accept: Tab, send: Page_Down, when: composing}
+      - {accept: "Shift+Tab", send: Page_Up, when: has_menu}
+      - {accept: Tab, send: Page_Down, when: has_menu}
       - {accept: bracketleft, send: Page_Up, when: paging}
       - {accept: bracketright, send: Page_Down, when: has_menu}
 #      - {accept: Return, send: Escape, when: composing}   # 回车清码
@@ -105,38 +109,38 @@ patch:
       "}": ["』", "〗", "｝"]
       "~": "～"
     half_shape:
-      "!": {commit: "！"}
-      "\"": {pair: ["“", "”"]}
+      "!": ["！"]
+      "\"": ["\"","“", "”"]
       "#": "#"
-      "$": "￥"
+      "$": ["￥"]
       "%": ["%", "％", "°", "℃"]
       "&": "&"
-      "'": {pair: ["‘", "’"]}
-      "(": "（"
-      ")": "）"
-      "*": ["·","×"]
+      "'": ["‘", "’"]
+      "(": ["（"]
+      ")": ["）"]
+      "*": ["*", "・", "×"]
       "+": "+"
-      ",": {commit: "，"}
+      ",": ["，"]
       "-": "-"
-      .: {commit: "。"}
-      "/": {commit: "、"}
-      ":": {commit: "："}
-      ";": {commit: "；"}
-      "<": {commit: "《"}
+      .: ["。"]
+      "/": "/"
+      ":": ["："]
+      ";": ["；"]
+      "<": ["《"]
       "=": "="
-      ">": {commit: "》"}
-      "?": {commit: "？"}
+      ">": ["》"]
+      "?": ["？"]
       "@": "@"
-      "[": {commit: "【"}
-      "\\": {commit: "、"}
-      "]": {commit: "】"}
-      "^": {commit: "……"}
-      _: "——"
+      "[": ["【"]
+      "\\": ["、"]
+      "]": ["】"]
+      "^": ["……"]
+      _: ["——"]
       "`": "`"
-      "{": "『"
+      "{": ["『"]
       "|": "|"
-      "}": "』"
-      "~": "~"
+      "}": ["』"]
+      "~": ["～"]
   recognizer:
     patterns:
       email: "^[-_.0-9A-Za-z]*@.*$"
